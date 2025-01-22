@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+  <title>shipment website</title>
+
+</head>
+<body>
+  <!--Navigaiton Bar start-->
+  <section class="navigation-section">
+    <div class="logo-container">
+      <img src="photos/Logo.jpg" alt="Logo">
+    </div>
+    <button class="navigation-toggle">Menu</button>
+    <nav class="navigation-links">
+      <ul>
+        <li><a href="index1.html">Home</a></li>
+        <li><a href="index2.html">about</a></li>
+        <li><a href="index3.html">Services</a></li>
+        <li><a href="index4.html">Projects</a></li>
+        <li><a href="index5.html">Contact</a></li>
+      </ul>
+    </nav>
+  </section>
+  
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleButton = document.querySelector(".navigation-toggle");
+    const navigationLinks = document.querySelector(".navigation-links ul");
+  
+    toggleButton.addEventListener("click", function() {
+      navigationLinks.style.display = navigationLinks.style.display === '' ? 'flex' : '';
+    });
+  });
+  
+  </script>
+  <!--Navigaiton part end-->
+
+  <section class="image-section">
+    <div class="content">
+      <h2>Our Projects</h2>
+      <a href="index8.html" class="learn-more-button">Learn More</a>
+    </div>
+  </section>
+
+<!--project section start-->
+<section class="projects">
+  <div class="container">
+    <h2>Our Projects</h2>
+    <div class="project-item">
+      <img src="photos/1.jpg" alt="Project 1">
+      <div class="project-details">
+        <h3>International Trade Expansion</h3>
+        <p>We have successfully facilitated the expansion of international trade for numerous clients by providing efficient logistics solutions that connect businesses across borders.</p>
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="photos/2.jpg" alt="Project 2">
+      <div class="project-details">
+        <h3>Supply Chain Optimization</h3>
+        <p> Our team has worked closely with clients to optimize their supply chain operations, implementing innovative strategies that enhance efficiency, reduce costs, and improve overall productivity. </p>     
+      </div>
+    </div>
+    <div class="project-item">
+      <img src="photos/3.jpg" alt="Project 3">
+      <div class="project-details">
+        <h3>Specialized Cargo Handling</h3>
+        <p>We specialize in handling and transporting specialized cargo, such as perishable goods, hazardous materials, oversized shipments, and fragile items. </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--project section end -->
+  
+<!--Footer Section Start-->
+<footer>
+  <div class="containera">
+    <div class="footer-column">
+      <h3>About Us</h3>
+      <p>Al-Zajil Shipping and Services is a company specialized in the field of air, sea and land freight..</p>
+      <ul class="social-media">
+        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="https://wa.me/+447711408853"><i class="fab fa-whatsapp"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Our Compony</h3>
+      <ul class="useful-links">
+        <li><a href="index.html">Home</a></li>
+      <li><a href="index2.html">about</a></li>
+      <li><a href="index3.html">Services</a></li>
+      <li><a href="index4.html">Projects</a></li>
+      <li><a href="index5.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Contact Us</h3>
+      <p>15b Dawley Road Dawley Road</p>
+      <p> Hayes England, UB3 1LS</p>
+      <p>Phone: +447711408853</p>
+      <p>Email: alzajelshipping@gmail.com</p>
+    </div>
+  </div>
+</footer>
+
+
+<!--Footer Section end-->
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+  <title>shipment website</title>
+</head>
+<body>
+  
+
+<!--Navbar Section Start-->
+<section class="navigation-section">
+  <div class="logo-container">
+    <img src="photos/Logo.jpg" alt="Logo">
+  </div>
+  <button class="navigation-toggle">Menu</button>
+  <nav class="navigation-links">
+    <ul>
+      <li><a href="index1.html">Home</a></li>
+      <li><a href="index2.html">about</a></li>
+      <li><a href="index3.html">Services</a></li>
+      <li><a href="index4.html">Projects</a></li>
+      <li><a href="index5.html">Contact</a></li>
+    </ul>
+  </nav>
+</section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const toggleButton = document.querySelector(".navigation-toggle");
+  const navigationLinks = document.querySelector(".navigation-links ul");
+
+  toggleButton.addEventListener("click", function() {
+    navigationLinks.style.display = navigationLinks.style.display === '' ? 'flex' : '';
+  });
+});
+
+</script>
+  <!--Navbar Seciton end-->
+  
+  
+<!--calculator section start-->
+<section class="calculator">
+<div class="shipment-section">
+  <h2>Get Price</h2>
+  
+  <div id="shipmentForm">
+    <label for="shipmentType">Shipment Type:</label>
+    <input type="radio" id="ukToUk" name="shipmentType" value="ukToUk" checked>
+    <label for="ukToUk">UK to UK</label>
+  
+    <input type="radio" id="international" name="shipmentType" value="international">
+    <label for="international">International</label>
+  </div>
+  
+  <div id="ukToUkForm">
+    <form id="ukToUkShipmentForm">
+      <div class="form-row">
+        <label for="weight">Weight (in kg):</label>
+        <input type="number" id="weight" name="weight" required min="10">
+      </div>
+  
+      <div class="form-row">
+        <label for="length">Length (in cm):</label>
+        <input type="number" id="length" name="length" required>
+  
+        <label for="width">Width (in cm):</label>
+        <input type="number" id="width" name="width" required>
+  
+        <label for="height">Height (in cm):</label>
+        <input type="number" id="height" name="height" required>
+      </div>
+  
+      <div class="form-row">
+        <button type="submit">Calculate Price</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="internationalForm" style="display: none;">
+    <form id="internationalShipmentForm">
+      <div class="form-row">
+        <label for="intlWeight">Weight (in kg):</label>
+        <input type="number" id="intlWeight" name="intlWeight" required min="10">
+      </div>
+  
+      <div class="form-row">
+        <label for="destination">Destination:</label>
+        <select id="destination" name="destination" required>
+          <option value="">Select a destination</option>
+          <option value="Bahrain">Bahrain</option>
+          <option value="Kuwait">Kuwait</option>
+          <option value="Oman">Oman</option>
+          <option value="Qatar">Qatar</option>
+          <option value="Saudi Arabia">Saudi Arabia</option>
+          <option value="United Arab Emirates">United Arab Emirates</option>
+          <option value="other">Other Destination</option>
+        </select>
+      </div>
+  
+      <div class="form-row">
+        <label for="intlLength">Length (in cm):</label>
+        <input type="number" id="intlLength" name="intlLength" required>
+  
+        <label for="intlWidth">Width (in cm):</label>
+        <input type="number" id="intlWidth" name="intlWidth" required>
+  
+        <label for="intlHeight">Height (in cm):</label>
+        <input type="number" id="intlHeight" name="intlHeight" required>
+      </div>
+  
+      <div class="form-row">
+        <button type="submit">Calculate Price</button>
+      </div>
+    </form>
+  </div>
+  
+  <div id="result"></div>
+</div>
+</section>
+<script>
+// Get form elements
+var ukToUkForm = document.getElementById('ukToUkForm');
+var internationalForm = document.getElementById('internationalForm');
+
+// Get radio buttons
+var ukToUkRadio = document.getElementById('ukToUk');
+var internationalRadio = document.getElementById('international');
+
+// Show/hide forms based on selected option
+ukToUkRadio.addEventListener('change', function() {
+ukToUkForm.style.display = 'block';
+internationalForm.style.display = 'none';
+});
+
+internationalRadio.addEventListener('change', function() {
+ukToUkForm.style.display = 'none';
+internationalForm.style.display = 'block';
+});
+
+// Calculate price event listener
+document.getElementById('ukToUkShipmentForm').addEventListener('submit', function(e) {
+e.preventDefault();
+// Retrieve form values
+var weight = parseInt(document.getElementById('weight').value);
+var length = parseInt(document.getElementById('length').value);
+var width = parseInt(document.getElementById('width').value);
+var height = parseInt(document.getElementById('height').value);
+
+// Calculate price based on conditions
+var pricePerKg = 2.5; // Default price
+if (weight >= 10 && weight <= 50 && length <= 100 && width <= 100 && height <= 100) {
+  pricePerKg = 2.0;
+} else if (weight > 50 && weight <= 100 && length <= 100 && width <= 100 && height <= 100) {
+  pricePerKg = 1.8;
+} else if (weight > 100 && weight <= 200 && length <= 100 && width <= 100 && height <= 100) {
+  pricePerKg = 1.7;
+}
+
+var totalPrice = weight * pricePerKg;
+var finalPrice = totalPrice + 50; // Add insurance policy price
+
+// Display result
+var resultElement = document.getElementById('result');
+resultElement.innerHTML = 'The price for shipping ' + weight + 'kg within the UK is ' + finalPrice.toFixed(2) + ' GBP. including insurance';
+});
+
+document.getElementById('internationalShipmentForm').addEventListener('submit', function(e) {
+e.preventDefault();
+// Retrieve form values
+var intlWeight = parseInt(document.getElementById('intlWeight').value);
+var destination = document.getElementById('destination').value;
+var intlLength = parseInt(document.getElementById('intlLength').value);
+var intlWidth = parseInt(document.getElementById('intlWidth').value);
+var intlHeight = parseInt(document.getElementById('intlHeight').value);
+
+// Calculate price based on conditions
+var pricePerKg = 2.5;
+if (
+  (destination === 'Bahrain' || destination === 'Kuwait' || destination === 'Oman' || destination === 'Qatar' || destination === 'Saudi Arabia' || destination === 'United Arab Emirates') &&
+  intlWeight >= 10 && intlWeight <= 50 &&
+  intlLength <= 100 && intlWidth <= 100 && intlHeight <= 100
+) {
+  pricePerKg = 2.0;
+} else if (
+  (destination === 'Bahrain' || destination === 'Kuwait' || destination === 'Oman' || destination === 'Qatar' || destination === 'Saudi Arabia' || destination === 'United Arab Emirates') &&
+  intlWeight > 50 && intlWeight <= 100 &&
+  intlLength <= 100 && intlWidth <= 100 && intlHeight <= 100
+) {
+  pricePerKg = 1.8;
+} else if (
+  (destination === 'Bahrain' || destination === 'Kuwait' || destination === 'Oman' || destination === 'Qatar' || destination === 'Saudi Arabia' || destination === 'United Arab Emirates') &&
+  intlWeight > 100 && intlWeight <= 200 &&
+  intlLength <=  100 && intlWidth <= 100 && intlHeight <= 100
+) {
+  pricePerKg = 1.7;
+}
+
+var totalPrice = intlWeight * pricePerKg;
+var finalPrice = totalPrice + 50; // Add insurance policy price
+
+// Display result
+var resultElement = document.getElementById('result');
+resultElement.innerHTML = 'The price for shipping ' + intlWeight + 'kg to ' + destination + ' is ' + finalPrice.toFixed(2) + ' GBP. including insurance';
+});
+</script>
+<!--calculator section end-->
+
+
+
+  <!--why you choose us start-->
+  <section id="why-choose-us">
+    <div class="container">
+      <h2>Why Choose Us</h2>
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-shipping-fast"></i>
+          <h3>Fast and Reliable</h3>
+          <p>We ensure fast and reliable delivery of your shipments to any destination.</p>
+          <a href="index8.html" class="learn-more-button">Learn More</a>
+        </div>
+        <div class="feature">
+          <i class="fas fa-truck"></i>
+          <h3>Wide Network</h3>
+          <p>Our extensive network of transportation services covers a wide range of locations.</p>
+          <a href="index8.html" class="learn-more-button">Learn More</a>
+        </div>
+        <div class="feature">
+          <i class="fas fa-lock"></i>
+          <h3>Secure Handling</h3>
+          <p>Your shipments are handled with the utmost care and security </p>
+          <a href="index8.html" class="learn-more-button">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--why you choose us end-->
+
+
+  <!--about us section start-->
+  <section id="who-are-we-section">
+    <div class="containern">
+      <div class="column text-column" id="text-column">
+        <div class="text">
+          <h2>About Us?</h2>
+          <p>Al-Zajil Cargo and Logistics Services provides air, sea and land freight services and services associated with freight operations such as internal transportation, warehousing and customs clearance.We have accumulated experience in freight services that exceeds a decade of continuous work. Thanks to our long experience and the loyalty of our distinguished customers, we have achieved distinguished partnerships and relationships with giant companies in this field, such as air freight companies, maritime shipping companies, and companies related to freight services.
+            Our excellence is the result of our customers' confidence in our services, so we pay attention to the quality of service at competitive prices in pursuit of our customers' satisfaction. We also care about the details of the service in order to achieve integration.
+            </p>
+            <a href="index6.html" class="learn-more-button">Learn More</a>
+        </div>
+      </div>
+      <div class="column image-column" id="image-column">
+        <img src="photos/7.jpg" alt="Company Image" class="image">       
+      </div>
+    </div>
+  </section>
+    <!--about us section end-->
+
+   <!--our customer first section start--> 
+   <!--   <section class="customer-first-section">
+      <div class="customer-first-content">
+          <h2 class="customer-first-title">Our Customer First</h2>
+          <p class="customer-first-text">Our customers come at the forefront of our priorities, and to work to meet all their needs,
+      the company is always working on qualifying and training the work team in order to improve work and improve communication to provide the best services to our customers.</p>
+      </div>
+  </section>  -->
+
+    <!--our customer first section end--> 
+
+
+   <!--our service section start-->
+  
+   <section id="our-services">
+    <div class="container">
+      <h2 class="ab">Our Services</h2>
+      <div class="services">
+        <div class="service">
+          <img src="photos/11.jpg">
+          <div class="overlay">
+            <i class="fas fa-shipping-fast"></i>
+            <h3>Shipping and transportation</h3>
+            <a href="index8.html" class="learn-more-button">Learn More</a>
+          </div>
+        </div>
+        <div class="service">
+          <img src="photos/10.jpg">
+          <div class="overlay">
+            <i class="fas fa-globe"></i>
+            <h3>Encapsulation</h3>
+            <a href="index8.html" class="learn-more-button">Learn More</a>
+          </div>
+        </div>
+        <div class="service">
+          <img src="photos/warehouse.webp">
+          <div class="overlay">
+            <i class="fas fa-archive"></i>
+            <h3>Warehousing</h3>
+            <a href="index8.html" class="learn-more-button">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <!--our service section end-->
+
+
+    <!--Our Parterns Section Start-->
+    <section class="partners-section">
+      <h1 class="partners-header">Our Partners</h1>
+      <div class="partners-logos">
+        <img src="photos/dhl-logo-2.png" alt="Partner 1">
+        <img src="photos/dpd-logo-3.png" alt="Partner 2">
+        <img src="photos/fedex-3 logo.jpg" alt="Partner 3">
+        <img src="photos/qnb.jpg" alt="Partner 4">
+        <div class="partners-scroll">
+          <img src="photos/flyemarates3.png" alt="Partner 5">
+          <img src="photos/Saudi-Arabian-Airlines-3Logo.jpg" alt="Partner 6">
+          <img src="photos/ethipoi3.jpeg" alt="Partner 6">
+        </div>
+      </div>
+    </section>
+    <!--Our Parterns Section end-->
+
+<!--Footer Section Start-->
+<footer>
+  <div class="containera">
+    <div class="footer-column">
+      <h3>About Us</h3>
+      <p>Al-Zajil Shipping and Services is a company specialized in the field of air, sea and land freight..</p>
+      <ul class="social-media">
+        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="https://wa.me/+447711408853"><i class="fab fa-whatsapp"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Our Compony</h3>
+      <ul class="useful-links">
+        <li><a href="index.html">Home</a></li>
+      <li><a href="index2.html">about</a></li>
+      <li><a href="index3.html">Services</a></li>
+      <li><a href="index4.html">Projects</a></li>
+      <li><a href="index5.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Contact Us</h3>
+      <p>15b Dawley Road Dawley Road</p>
+      <p> Hayes England, UB3 1LS</p>
+      <p>Phone: +447711408853</p>
+      <p>Email: alzajelshipping@gmail.com</p>
+    </div>
+  </div>
+</footer>
+
+
+<!--Footer Section end-->
+</body>
+</html>
